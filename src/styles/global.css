@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-dark-brown: #2a1b14;
+    --color-deep-brown: #3b261b;
+    --color-warm-brown: #5a3a28;
+    --color-light-brown: #8a674f;
+    --color-cream: #e8dcc7;
+    --color-warm-cream: #f3ebdd;
+    --color-paper: #f8f2e7;
+    --color-gold-accent: #c29b38;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-paper);
+    color: var(--color-dark-brown);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--color-paper);
+  }
+
+  ::selection {
+    background-color: var(--color-cream);
+    color: var(--color-dark-brown);
+  }
+}
+
+/* Manuscript & Heritage Utilities */
+.text-manuscript-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.manuscript-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--color-light-brown);
+  margin: 2rem 0;
+}
+
+.manuscript-divider::before,
+.manuscript-divider::after {
+  content: '';
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-light-brown),
+    transparent
+  );
+}
+
+.paper-card {
+  background-color: rgba(243, 235, 221, 0.6);
+  border: 1px solid rgba(138, 103, 79, 0.2);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px -2px rgba(42, 27, 20, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+/* Parallax Scroller Base Styles */
+.parallax {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.parallax__header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax__visuals {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax__layers {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax__layer-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.parallax__layer-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.parallax__fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 242, 231, 0) 0%,
+    rgba(248, 242, 231, 0.2) 60%,
+    #f8f2e7 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.batik-bottom-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  background-image: url('/images/batik-divider.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .parallax__layer-img {
+    transform: none !important;
+  }
+}
+
+/* Manuscript Prose Typography System */
+.prose {
+  color: var(--color-deep-brown);
+  line-height: 1.85;
+  font-size: 1.05rem;
+}
+
+.prose h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-dark-brown);
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(138, 103, 79, 0.25);
+}
+
+.prose p {
+  margin-bottom: 1.35rem;
+  color: var(--color-deep-brown);
+  text-align: justify;
+}
+
+.prose blockquote {
+  background-color: rgba(243, 235, 221, 0.85);
+  border-left: 4px solid var(--color-gold-accent);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.6rem;
+  margin: 1.75rem 0;
+  font-style: italic;
+  color: var(--color-warm-brown);
+  font-size: 1rem;
+}
+
+.prose hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(138, 103, 79, 0.3), transparent);
+  margin: 2.5rem 0;
+}

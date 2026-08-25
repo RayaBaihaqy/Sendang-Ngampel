@@ -1,0 +1,81 @@
+---
+import Navbar from '../components/ui/Navbar.astro';
+import Footer from '../components/sections/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  hasNavFooter?: boolean;
+}
+
+const {
+  title = "Sendang Ngampel Wetan — Digital Heritage & Legenda Lokal",
+  description = "Website digital heritage dan dokumentasi sejarah serta legenda lokal Sendang Ngampel Wetan, Krajan 1, Desa Ngampel Wetan, Kecamatan Ngampel, Kabupaten Kendal.",
+  hasNavFooter = true
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logos/PemDes.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Sendang Ngampel Wetan, Kendal, Digital Heritage, Sejarah Kendal, Legenda Sendang, Nyadran Ngampel Wetan" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-heritage-paper text-heritage-dark-brown antialiased selection:bg-heritage-cream">
+    {hasNavFooter && <Navbar />}
+
+    <main>
+      <slot />
+    </main>
+
+    {hasNavFooter && <Footer />}
+
+    <!-- Back to Top Floating Button -->
+    <button
+      id="backToTop"
+      aria-label="Kembali ke atas halaman"
+      class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-heritage-dark-brown/90 text-heritage-warm-cream shadow-lg border border-heritage-gold-accent/40 opacity-0 pointer-events-none transition-all duration-300 hover:bg-heritage-warm-brown hover:scale-110"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6"/>
+      </svg>
+    </button>
+
+    <script>
+      const backToTopBtn = document.getElementById('backToTop');
+      if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 400) {
+            backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+          } else {
+            backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+          }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    </script>
+  </body>
+</html>

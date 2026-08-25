@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry, render } from 'astro:content';
+
+// Fetch the legend document entry
+const entry = await getEntry('legenda', 'sendang-ngampel-wetan');
+if (!entry) {
+  throw new Error("Dokumen legenda tidak ditemukan.");
+}
+
+const { Content } = await render(entry);
+---
+
+<Layout
+  title={`${entry.data.title} — Sendang Ngampel Wetan`}
+  description={`Manuskrip digital legenda Sendang Ngampel Wetan, Krajan 1, Desa Ngampel Wetan, Kendal.`}
+>
+  <!-- Manuscript Article Header -->
+  <article class="py-16 px-4 sm:px-6 max-w-3xl mx-auto min-h-screen">
+    <!-- Navigation Back Link -->
+    <div class="mb-10">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-sm text-heritage-light-brown hover:text-heritage-dark-brown transition-colors group"
+      >
+        <span class="group-hover:-translate-x-1 transition-transform">←</span>
+        <span>Kembali ke Beranda</span>
+      </a>
+    </div>
+
+    <!-- Header Metadata Card -->
+    <header class="text-center pb-10 border-b border-heritage-light-brown/30">
+      <div class="inline-block px-3 py-1 rounded-full bg-heritage-warm-cream border border-heritage-gold-accent/40 text-xs font-serif italic text-heritage-gold-accent mb-4">
+        Digital Manuscript Archive
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-serif font-bold text-heritage-dark-brown tracking-tight leading-tight">
+        {entry.data.title}
+      </h1>
+
+      {entry.data.subtitle && (
+        <p class="mt-3 text-lg sm:text-xl font-serif italic text-heritage-warm-brown">
+          {entry.data.subtitle}
+        </p>
+      )}
+
+      <div class="my-6"></div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-heritage-light-brown font-medium">
+        <span>📍 {entry.data.location}</span>
+        <span>•</span>
+        <span>📜 {entry.data.sourceNote}</span>
+      </div>
+    </header>
+
+    <!-- Body Manuscript Reading Content -->
+    <div class="prose max-w-none my-10">
+      <Content />
+    </div>
+
+    <!-- Bottom Manuscript Footer & Back Button -->
+    <footer class="mt-16 pt-8 border-t border-heritage-light-brown/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-heritage-dark-brown text-heritage-warm-cream hover:bg-heritage-warm-brown transition-colors text-sm font-medium shadow-md"
+      >
+        <span>← Kembali ke Homepage</span>
+      </a>
+
+      <span class="text-xs text-heritage-light-brown italic font-serif">
+        Dokumentasi Digital Heritage Sendang Ngampel Wetan
+      </span>
+    </footer>
+  </article>
+</Layout>

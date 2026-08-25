@@ -1,0 +1,164 @@
+---
+---
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 w-full bg-transparent text-heritage-warm-cream transition-transform duration-500 ease-in-out"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Brand Logo Text with PemDes Logo -->
+    <a href="/" class="flex items-center gap-2.5 group z-50">
+      <img
+        src="/logos/PemDes.png"
+        alt="Logo Pemerintah Desa Ngampel Wetan"
+        class="h-8 w-8 sm:h-9 sm:w-9 object-contain aspect-square transition-transform group-hover:scale-105"
+        title="Pemerintah Desa Ngampel Wetan"
+      />
+      <span
+        id="navBrandText"
+        class="font-serif font-bold text-lg sm:text-xl text-heritage-warm-cream group-hover:text-white transition-colors duration-300"
+      >
+        Sendang Ngampel Wetan
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav id="navLinks" class="hidden md:flex items-center gap-6 text-sm font-medium text-heritage-warm-cream/90">
+      <a href="/#tentang" class="hover:text-heritage-gold-accent transition-colors">Tentang</a>
+      <a href="/#sejarah" class="hover:text-heritage-gold-accent transition-colors">Sejarah</a>
+      <a href="/legenda" class="font-semibold hover:text-heritage-gold-accent transition-colors">Legenda</a>
+      <a href="/#revitalisasi" class="hover:text-heritage-gold-accent transition-colors">Revitalisasi</a>
+      <a href="/#galeri" class="hover:text-heritage-gold-accent transition-colors">Galeri</a>
+      <a href="/#lokasi" class="hover:text-heritage-gold-accent transition-colors">Lokasi</a>
+    </nav>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobileMenuToggle"
+      aria-label="Toggle Navigation Menu"
+      class="md:hidden p-2 rounded-lg text-heritage-warm-cream focus:outline-none transition-colors z-50"
+    >
+      <svg id="hamburgerIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Drawer Panel -->
+  <div
+    id="mobileMenu"
+    class="fixed inset-0 top-16 bg-heritage-dark-brown/95 backdrop-blur-md z-40 hidden flex-col px-6 py-8 space-y-6 text-center border-t border-heritage-light-brown/20 transition-all duration-300 md:hidden"
+  >
+    <a href="/#tentang" class="mobile-nav-link text-lg font-serif text-heritage-cream hover:text-heritage-gold-accent transition-colors">Tentang Sendang</a>
+    <a href="/#sejarah" class="mobile-nav-link text-lg font-serif text-heritage-cream hover:text-heritage-gold-accent transition-colors">Sejarah Ringkas</a>
+    <a href="/legenda" class="mobile-nav-link text-lg font-serif text-heritage-gold-accent font-semibold hover:underline">Manuskrip Legenda</a>
+    <a href="/#revitalisasi" class="mobile-nav-link text-lg font-serif text-heritage-cream hover:text-heritage-gold-accent transition-colors">Dokumentasi 2026</a>
+    <a href="/#galeri" class="mobile-nav-link text-lg font-serif text-heritage-cream hover:text-heritage-gold-accent transition-colors">Galeri Visual</a>
+    <a href="/#lokasi" class="mobile-nav-link text-lg font-serif text-heritage-cream hover:text-heritage-gold-accent transition-colors">Peta Lokasi</a>
+  </div>
+</header>
+
+<script>
+  let lastScrollY = window.scrollY;
+  const navbar = document.getElementById('navbar');
+  const navBrandText = document.getElementById('navBrandText');
+  const navLinks = document.getElementById('navLinks');
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const hamburgerIcon = document.getElementById('hamburgerIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu(open?: boolean) {
+    isMobileMenuOpen = typeof open === 'boolean' ? open : !isMobileMenuOpen;
+    if (mobileMenu && hamburgerIcon && closeIcon) {
+      if (isMobileMenuOpen) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+  }
+
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => toggleMobileMenu());
+  }
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => toggleMobileMenu(false));
+  });
+
+  function handleNavbarScroll() {
+    if (!navbar) return;
+    const currentScrollY = window.scrollY;
+    const isHeroPage = !!document.getElementById('hero');
+    const heroThreshold = isHeroPage ? window.innerHeight * 0.75 : 50;
+
+    // 1. Hide on scroll down, show on scroll up (Slide animation)
+    if (!isMobileMenuOpen) {
+      if (currentScrollY > 80 && currentScrollY > lastScrollY + 4) {
+        navbar.style.transform = 'translateY(-100%)';
+      } else if (currentScrollY < lastScrollY - 4 || currentScrollY <= 80) {
+        navbar.style.transform = 'translateY(0%)';
+      }
+    }
+
+    // 2. Glassmorphism Backdrop Blur Background on Scroll
+    if (currentScrollY > 50) {
+      navbar.classList.add('bg-heritage-paper/90', 'backdrop-blur-md', 'border-b', 'border-heritage-light-brown/20', 'shadow-sm');
+      navbar.classList.remove('bg-transparent');
+    } else {
+      navbar.classList.remove('bg-heritage-paper/90', 'backdrop-blur-md', 'border-b', 'border-heritage-light-brown/20', 'shadow-sm');
+      navbar.classList.add('bg-transparent');
+    }
+
+    // 3. Dynamic Text & Button Colors
+    if (isHeroPage && currentScrollY <= heroThreshold) {
+      if (navBrandText) {
+        navBrandText.classList.remove('text-heritage-dark-brown', 'group-hover:text-heritage-warm-brown');
+        navBrandText.classList.add('text-heritage-warm-cream', 'group-hover:text-white');
+      }
+
+      if (navLinks) {
+        navLinks.classList.remove('text-heritage-deep-brown');
+        navLinks.classList.add('text-heritage-warm-cream/90');
+      }
+
+      if (mobileMenuToggle) {
+        mobileMenuToggle.classList.remove('text-heritage-dark-brown');
+        mobileMenuToggle.classList.add('text-heritage-warm-cream');
+      }
+    } else {
+      if (navBrandText) {
+        navBrandText.classList.remove('text-heritage-warm-cream', 'group-hover:text-white');
+        navBrandText.classList.add('text-heritage-dark-brown', 'group-hover:text-heritage-warm-brown');
+      }
+
+      if (navLinks) {
+        navLinks.classList.remove('text-heritage-warm-cream/90');
+        navLinks.classList.add('text-heritage-deep-brown');
+      }
+
+      if (mobileMenuToggle) {
+        mobileMenuToggle.classList.remove('text-heritage-warm-cream');
+        mobileMenuToggle.classList.add('text-heritage-dark-brown');
+      }
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+  handleNavbarScroll();
+</script>

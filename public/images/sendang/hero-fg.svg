@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <!-- Foreground foliage and water reflection ripples -->
+  <g fill="#140D09">
+    <!-- Bottom water spring surface and ripples -->
+    <path d="M0 880 Q 480 840, 960 870 T 1920 850 L1920 1080 L0 1080 Z"/>
+    
+    <!-- Water ripples with gold highlights -->
+    <path d="M200 930 Q 500 910, 800 930" stroke="#8A674F" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M700 960 Q 1100 940, 1500 960" stroke="#C29B38" stroke-width="2.5" fill="none" opacity="0.5"/>
+    <path d="M1000 1000 Q 1350 985, 1700 1000" stroke="#8A674F" stroke-width="1.5" fill="none" opacity="0.4"/>
+    
+    <!-- Foreground leaves framing corners -->
+    <path d="M-20 700 C150 720, 250 820, 300 950 L-20 1080 Z"/>
+    <path d="M1940 700 C1770 720, 1670 820, 1620 950 L1940 1080 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { HeroParallax } from '../components/ui/HeroParallax';
+import AboutSendang from '../components/sections/AboutSendang.astro';
+import HistoryShort from '../components/sections/HistoryShort.astro';
+import LegendPreview from '../components/sections/LegendPreview.astro';
+import Revitalization from '../components/sections/Revitalization.astro';
+import Gallery from '../components/sections/Gallery.astro';
+import LocationMap from '../components/sections/LocationMap.astro';
+---
+
+<Layout
+  title="Sendang Ngampel Wetan — Digital Heritage & Legenda Lokal"
+  description="Situs dokumentasi sejarah dan legenda lokal Sendang Ngampel Wetan, Krajan 1, Desa Ngampel Wetan, Kecamatan Ngampel, Kabupaten Kendal."
+>
+  <!-- Hero Section with React Island Parallax -->
+  <section id="hero" class="relative">
+    <HeroParallax client:load />
+  </section>
+
+  <!-- Main Storytelling Sections -->
+  <AboutSendang />
+  <HistoryShort />
+  <LegendPreview />
+  <Revitalization />
+  <Gallery />
+  <LocationMap />
+</Layout>

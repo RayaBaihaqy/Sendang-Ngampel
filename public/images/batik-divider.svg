@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none" fill="none">
+  <defs>
+    <!-- Soft Wavy Gradient Fade from transparent to solid paper #F8F2E7 -->
+    <linearGradient id="wavyFadeGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8F2E7" stop-opacity="0" />
+      <stop offset="25%" stop-color="#F8F2E7" stop-opacity="0.25" />
+      <stop offset="55%" stop-color="#F8F2E7" stop-opacity="0.7" />
+      <stop offset="85%" stop-color="#F8F2E7" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#F8F2E7" stop-opacity="1" />
+    </linearGradient>
+
+    <!-- Shadow for wave line -->
+    <filter id="waveShadow" x="-5%" y="-30%" width="110%" height="160%">
+      <feDropShadow dx="0" dy="-4" stdDeviation="5" flood-color="#2A1B14" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Layer 1: Wavy Soft Gradient Fade (Starts 50px higher along the wave contour) -->
+  <path d="M0,15 C60,-15 120,-15 180,15 C240,45 300,45 360,15 C420,-15 480,-15 540,15 C600,45 660,45 720,15 C780,-15 840,-15 900,15 C960,45 1020,45 1080,15 C1140,-15 1200,-15 1260,15 C1320,45 1380,45 1440,15 L1440,220 L0,220 Z" fill="url(#wavyFadeGradient)" />
+
+  <!-- Layer 2: Solid Paper Cutout Base along the Wave -->
+  <path d="M0,65 C60,35 120,35 180,65 C240,95 300,95 360,65 C420,35 480,35 540,65 C600,95 660,95 720,65 C780,35 840,35 900,65 C960,95 1020,95 1080,65 C1140,35 1200,35 1260,65 C1320,95 1380,95 1440,65 L1440,220 L0,220 Z" fill="#F8F2E7" />
+
+  <!-- Layer 3: Main Gold Wave Contour Stroke -->
+  <path d="M0,65 C60,35 120,35 180,65 C240,95 300,95 360,65 C420,35 480,35 540,65 C600,95 660,95 720,65 C780,35 840,35 900,65 C960,95 1020,95 1080,65 C1140,35 1200,35 1260,65 C1320,95 1380,95 1440,65" stroke="#C29B38" stroke-width="4.5" stroke-linecap="round" fill="none" filter="url(#waveShadow)" />
+
+  <!-- Layer 4: Inner Dashed Heritage Contour Line -->
+  <path d="M0,72 C60,42 120,42 180,72 C240,102 300,102 360,72 C420,42 480,42 540,72 C600,102 660,102 720,72 C780,42 840,42 900,72 C960,102 1020,102 1080,72 C1140,42 1200,42 1260,72 C1320,102 1380,102 1440,72" stroke="#5A3A28" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6,8" fill="none" opacity="0.85" />
+
+  <!-- Layer 5: Accent Dots on Wave Peaks -->
+  <g fill="#C29B38">
+    <circle cx="90" cy="37" r="5" />
+    <circle cx="270" cy="93" r="4" fill="#5A3A28" />
+    <circle cx="450" cy="37" r="5" />
+    <circle cx="630" cy="93" r="4" fill="#5A3A28" />
+    <circle cx="810" cy="37" r="5" />
+    <circle cx="990" cy="93" r="4" fill="#5A3A28" />
+    <circle cx="1170" cy="37" r="5" />
+    <circle cx="1350" cy="93" r="4" fill="#5A3A28" />
+  </g>
+</svg>
