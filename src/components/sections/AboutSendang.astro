@@ -10,16 +10,25 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-    <!-- Visual Image Frame -->
-    <div class="md:col-span-5 relative">
-      <div class="absolute -inset-2 rounded-2xl bg-heritage-cream/60 rotate-2 border border-heritage-light-brown/30"></div>
-      <div class="relative rounded-xl overflow-hidden border border-heritage-light-brown/40 shadow-xl bg-heritage-warm-cream">
-        <img
-          src="/images/sendang/sendang sblm1.png"
-          alt="Dokumentasi Sendang Ngampel Wetan"
-          class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
+    <!-- Visual Photocard Frame -->
+    <div class="md:col-span-5 relative group">
+      <!-- Vintage Tape Accent at Top Center -->
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-heritage-cream/80 border border-heritage-light-brown/30 backdrop-blur-sm z-20 shadow-sm rotate-[-1deg]"></div>
+
+      <!-- Photocard Container (Straight & Clean Polaroid Style) -->
+      <div class="relative p-3 sm:p-4 pb-8 sm:pb-9 bg-heritage-warm-cream border border-heritage-light-brown/30 rounded-2xl shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+        <div class="overflow-hidden rounded-xl border border-heritage-light-brown/20 bg-heritage-paper">
+          <img
+            src="/images/sendang/sendang sblm1.png"
+            alt="Dokumentasi Sendang Ngampel Wetan"
+            class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+        <!-- Photocard Bottom Label -->
+        <div class="mt-3 text-center">
+          <span class="font-serif italic text-xs text-heritage-light-brown font-medium">Situs Sendang Ngampel Wetan</span>
+        </div>
       </div>
     </div>
 
